@@ -1,0 +1,5 @@
+from .TensorDecomposition_CP import CP
+from .DesignMatrix_P1 import P1DesignMatrix
+from .TensorDecomposition_CandelincFE import CandelincFE
+from .Residual_Sampling import ResidualSampling
+from .Figures_CandelincFE import FiguresCandelincFE
