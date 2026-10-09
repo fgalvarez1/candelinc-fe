@@ -6,8 +6,8 @@ It decomposes a third-order tensor P of size S × T × A (space × time × acqui
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc4/docs/equation-dark.svg">
-    <img alt="P ≈ Σ_{r=1..R} U⁽ˢ⁾[:, r] ⊗ U⁽ᵗ⁾[:, r] ⊗ (D @ B)[:, r]" src="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc4/docs/equation-light.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0/docs/equation-dark.svg">
+    <img alt="P ≈ Σ_{r=1..R} U⁽ˢ⁾[:, r] ⊗ U⁽ᵗ⁾[:, r] ⊗ (D @ B)[:, r]" src="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0/docs/equation-light.svg">
   </picture>
 </p>
 
