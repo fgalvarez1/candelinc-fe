@@ -2,17 +2,17 @@
 
 **CANDELINC-FE** is a constrained CP (CANDECOMP/PARAFAC) tensor decomposition in which the weights of each acquisition are not free parameters but finite element functions of known variables (for example clinical variables such as age, BMI or body position).
 
-It decomposes a third-order tensor $\mathcal{P} \in \mathbb{R}^{S \times T \times A}$ (space × time × acquisitions) as
+It decomposes a third-order tensor P of size S × T × A (space × time × acquisitions) as
 
-$$
-\mathcal{P} \approx \sum_{r=1}^{R} U^{(s)}_{:,r} \otimes U^{(t)}_{:,r} \otimes (D B)_{:,r},
-$$
+```text
+P  ≈  Σ_{r=1..R}  U⁽ˢ⁾[:, r] ⊗ U⁽ᵗ⁾[:, r] ⊗ (D @ B)[:, r]
+```
 
-where the spatial modes $U^{(s)}$ and temporal modes $U^{(t)}$ are shared by all acquisitions, $D$ is a design matrix built from the variables, and $B$ is the coefficient matrix that is optimized. Continuous variables are represented with piecewise linear (P1) finite element basis functions whose nodes are placed at the empirical quantiles of the data; categorical variables are encoded with indicator functions; interactions between a continuous and a categorical variable are also supported.
+where the spatial modes U⁽ˢ⁾ and temporal modes U⁽ᵗ⁾ are shared by all acquisitions, D is a design matrix built from the variables, and B is the coefficient matrix that is optimized. Continuous variables are represented with piecewise linear (P1) finite element basis functions whose nodes are placed at the empirical quantiles of the data; categorical variables are encoded with indicator functions; interactions between a continuous and a categorical variable are also supported.
 
-Because $U^{(a)} = D B$, the model:
+Because the acquisition modes are U⁽ᵃ⁾ = D @ B, the model:
 
-- **quantifies** the influence of each variable on the spatiotemporal field (through $B$),
+- **quantifies** the influence of each variable on the spatiotemporal field (through B),
 - **predicts** the field for a new acquisition from its variables alone,
 - and, combined with a CP decomposition of the residuals, **samples** the variability that the variables do not explain.
 
@@ -30,7 +30,7 @@ or, for the latest version from GitHub:
 pip install git+https://github.com/fgalvarez1/candelinc-fe.git
 ```
 
-Requirements: Python ≥ 3.9, `numpy`, `tensorly` and `matplotlib`.
+Requirements: Python ≥ 3.9, `numpy` ≥ 1.22, `tensorly` ≥ 0.5 and `matplotlib` ≥ 3.5.
 
 ## Quick start
 
@@ -96,17 +96,17 @@ X_exact = age_new * np.outer(f1, g1) + weight_new * np.outer(f2, g2)
 print("Relative error:", np.linalg.norm(X_new - X_exact) / np.linalg.norm(X_exact))
 ```
 
-`fit` returns the factor matrices and the normalized mean squared error of the reconstruction. The columns of $B$, plotted against the node positions, show how each variable affects each mode (see `FiguresCandelincFE`).
+`fit` returns the factor matrices and the normalized mean squared error of the reconstruction. The columns of B, plotted against the node positions, show how each variable affects each mode (see `FiguresCandelincFE`).
 
 ## Main components
 
 | Class | Purpose |
 |---|---|
-| `CandelincFE` | Builds the global design matrix $D$ from the variables (`build_global_design_matrix`) and computes the decomposition with an alternating least squares algorithm (`fit`). |
+| `CandelincFE` | Builds the global design matrix D from the variables (`build_global_design_matrix`) and computes the decomposition with an alternating least squares algorithm (`fit`). |
 | `P1DesignMatrix` | P1 finite element design matrix of a continuous variable for given nodes; also used to evaluate new variable values. |
 | `CP` | Normalized CP decomposition (via TensorLy), used as baseline and for initialization. |
 | `ResidualSampling` | CP decomposition of the residual tensor and a multivariate Gaussian over its acquisition weights, to generate new fields that include the unexplained variability. |
-| `FiguresCandelincFE` | Plots of the temporal modes and of the coefficients of $B$ as functions of the variables. |
+| `FiguresCandelincFE` | Plots of the temporal modes and of the coefficients of B as functions of the variables. |
 
 ### Specifying the variables
 
@@ -136,10 +136,10 @@ The code follows the notation of the article:
 
 | Article | Code |
 |---|---|
-| $U^{(s)}$, $U^{(t)}$, $U^{(a)}$ (spatial, temporal, acquisition factor matrices) | `U_s`, `U_t`, `U_a` |
-| $D$ (design matrix), $B$ (coefficient matrix) | `D`, `B` |
-| $\tau$ (Tikhonov regularization) | `tau` |
-| $\mathcal{P}'_{\mathrm{res}}$ (residual tensor) | `P_res` |
+| U⁽ˢ⁾, U⁽ᵗ⁾, U⁽ᵃ⁾ (spatial, temporal, acquisition factor matrices) | `U_s`, `U_t`, `U_a` |
+| D (design matrix), B (coefficient matrix) | `D`, `B` |
+| τ (Tikhonov regularization) | `tau` |
+| P′ᵣₑₛ (residual tensor) | `P_res` |
 
 <!-- TODO: uncomment once the article is submitted, and change "see [Demos and data](#demos-and-data)" in the introduction back to "in the article listed under [Citation](#citation)"
 
