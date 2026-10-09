@@ -4,9 +4,12 @@
 
 It decomposes a third-order tensor P of size S × T × A (space × time × acquisitions) as
 
-```text
-P  ≈  Σ_{r=1..R}  U⁽ˢ⁾[:, r] ⊗ U⁽ᵗ⁾[:, r] ⊗ (D @ B)[:, r]
-```
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc2/docs/equation-dark.svg">
+    <img alt="P ≈ Σ_{r=1..R} U⁽ˢ⁾[:, r] ⊗ U⁽ᵗ⁾[:, r] ⊗ (D @ B)[:, r]" src="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc2/docs/equation-light.svg">
+  </picture>
+</p>
 
 where the spatial modes U⁽ˢ⁾ and temporal modes U⁽ᵗ⁾ are shared by all acquisitions, D is a design matrix built from the variables, and B is the coefficient matrix that is optimized. Continuous variables are represented with piecewise linear (P1) finite element basis functions whose nodes are placed at the empirical quantiles of the data; categorical variables are encoded with indicator functions; interactions between a continuous and a categorical variable are also supported.
 

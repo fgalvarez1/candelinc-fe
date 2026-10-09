@@ -6,3 +6,12 @@ dist/
 .venv/
 venv/
 .DS_Store
+
+# LaTeX build files (docs/equation.tex)
+*.aux
+*.dvi
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+docs/*.pdf
