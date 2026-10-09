@@ -2,20 +2,20 @@
 
 **CANDELINC-FE** is a constrained CP (CANDECOMP/PARAFAC) tensor decomposition in which the weights of each acquisition are not free parameters but finite element functions of known variables (for example clinical variables such as age, BMI or body position).
 
-It decomposes a third-order tensor P of size S × T × A (space × time × acquisitions) as
+It decomposes a third-order tensor <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/symbol-P-dark.svg"><img alt="P" src="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/symbol-P-light.svg"></picture> of size <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/symbol-STA-dark.svg"><img alt="S × T × A" src="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/symbol-STA-light.svg"></picture> (space × time × acquisitions) as
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc2/docs/equation-dark.svg">
-    <img alt="P ≈ Σ_{r=1..R} U⁽ˢ⁾[:, r] ⊗ U⁽ᵗ⁾[:, r] ⊗ (D @ B)[:, r]" src="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc2/docs/equation-light.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/equation-dark.svg">
+    <img alt="P ≈ Σ_{r=1..R} U⁽ˢ⁾[:, r] ⊗ U⁽ᵗ⁾[:, r] ⊗ (D @ B)[:, r]" src="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/equation-light.svg">
   </picture>
 </p>
 
-where the spatial modes U⁽ˢ⁾ and temporal modes U⁽ᵗ⁾ are shared by all acquisitions, D is a design matrix built from the variables, and B is the coefficient matrix that is optimized. Continuous variables are represented with piecewise linear (P1) finite element basis functions whose nodes are placed at the empirical quantiles of the data; categorical variables are encoded with indicator functions; interactions between a continuous and a categorical variable are also supported.
+where the spatial modes <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/symbol-Us-dark.svg"><img alt="U⁽ˢ⁾" src="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/symbol-Us-light.svg"></picture> and temporal modes <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/symbol-Ut-dark.svg"><img alt="U⁽ᵗ⁾" src="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/symbol-Ut-light.svg"></picture> are shared by all acquisitions, <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/symbol-D-dark.svg"><img alt="D" src="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/symbol-D-light.svg"></picture> is a design matrix built from the variables, and <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/symbol-B-dark.svg"><img alt="B" src="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/symbol-B-light.svg"></picture> is the coefficient matrix that is optimized. Continuous variables are represented with piecewise linear (P1) finite element basis functions whose nodes are placed at the empirical quantiles of the data; categorical variables are encoded with indicator functions; interactions between a continuous and a categorical variable are also supported.
 
-Because the acquisition modes are U⁽ᵃ⁾ = D @ B, the model:
+Because the acquisition modes are <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/acquisition-modes-dark.svg"><img alt="U⁽ᵃ⁾ = D @ B" src="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/acquisition-modes-light.svg"></picture>, the model:
 
-- **quantifies** the influence of each variable on the spatiotemporal field (through B),
+- **quantifies** the influence of each variable on the spatiotemporal field (through <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/symbol-B-dark.svg"><img alt="B" src="https://raw.githubusercontent.com/fgalvarez1/candelinc-fe/v0.1.0rc3/docs/symbol-B-light.svg"></picture>),
 - **predicts** the field for a new acquisition from its variables alone,
 - and, combined with a CP decomposition of the residuals, **samples** the variability that the variables do not explain.
 
@@ -136,7 +136,7 @@ The code follows the notation of the article:
 | U⁽ˢ⁾, U⁽ᵗ⁾, U⁽ᵃ⁾ (spatial, temporal, acquisition factor matrices) | `U_s`, `U_t`, `U_a` |
 | D (design matrix), B (coefficient matrix) | `D`, `B` |
 | τ (Tikhonov regularization) | `tau` |
-| P′ᵣₑₛ (residual tensor) | `P_res` |
+| P′<sub>res</sub> (residual tensor) | `P_res` |
 
 <!-- TODO: uncomment once the article is submitted, and change "see [Demos and data](#demos-and-data)" in the introduction back to "in the article listed under [Citation](#citation)"
 
