@@ -24,12 +24,6 @@ The method was developed for the reduced-order modeling of spatiotemporal pleura
 pip install candelinc-fe
 ```
 
-or, for the latest version from GitHub:
-
-```bash
-pip install git+https://github.com/fgalvarez1/candelinc-fe.git
-```
-
 Requirements: Python ≥ 3.9, `numpy` ≥ 1.22, `tensorly` ≥ 0.5 and `matplotlib` ≥ 3.5.
 
 ## Quick start
