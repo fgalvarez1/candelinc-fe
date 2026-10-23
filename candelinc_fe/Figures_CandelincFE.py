@@ -161,7 +161,7 @@ class FiguresCandelincFE:
                     else:
                         axs[i_var].set_xlabel(f"${var1_replaced}$", fontsize=font_size)
                     # axs[i_var].set_ylabel(rf'$B_{{\mathrm{{{var1_replaced}}}}}$ (SUP2)')
-                    axs[i_var].set_ylabel(rf'${var1_replaced}$ modes (supine)', fontsize=font_size)
+                    axs[i_var].set_ylabel(rf'Acquisition weights (supine)', fontsize=font_size)
                     axs[i_var].legend(fontsize=font_size-2)
                     axs[i_var].tick_params(axis="both", labelsize=font_size)
                     # axs[i_var].set_xlim(np.min(nodes), np.max(nodes))
@@ -189,7 +189,7 @@ class FiguresCandelincFE:
                     else:
                         axs[i_var].set_xlabel(f"${var1_replaced}$", fontsize=font_size)
                     # axs[i_var].set_ylabel(rf'$B_{{\mathrm{{{var1_replaced}}}}}$ (PRO1)')
-                    axs[i_var].set_ylabel(rf'${var1_replaced}$ modes (prone)', fontsize=font_size)
+                    axs[i_var].set_ylabel(rf'Acquisition weights (prone)', fontsize=font_size)
                     axs[i_var].legend(fontsize=font_size-2)
                     axs[i_var].tick_params(axis="both", labelsize=font_size)
                     # axs[i_var].set_xlim(np.min(nodes), np.max(nodes))
